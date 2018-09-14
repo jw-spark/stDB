@@ -1,5 +1,6 @@
 StealthDB
 =======================================================================
+*** forked from https://github.com/cryptograph/stealthdb
 
 StealthDB is an extension to PostgreSQL, leveraging Intel SGX, that endows it with encrypted database functionality (i.e. encrypted values can be persisted in tables, and queries with encrypted expressions and predicates can be specified). The database's integrity and confidentiality is guaranteed under a threat model in which only the CPU is trusted. Further information can be found [here](https://arxiv.org/pdf/1711.02279.pdf).
 
@@ -22,7 +23,7 @@ StealthDB is a research project and is **not** suitable for production use.
 0. Install PostgreSQL server and the PostgreSQL extension build tool:
 
 ```
-sudo apt-get install postgresl postgresql-server-dev-all
+sudo apt-get install postgresql postgresql-server-dev-all
 ```
 
 1. Run:
