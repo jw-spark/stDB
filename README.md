@@ -28,6 +28,7 @@ sudo apt-get install postgresl postgresql-server-dev-all
 1. Run:
 
 ```
+git apply docker_install.patch
 make
 sudo make install
 ```
@@ -45,6 +46,11 @@ make docker
 ### Running Queries
 
 0. Run the PostgreSQL client.
+```
+sudo apt-get -y -f install postgresql postgresql-client
+
+sudo -u postgres psql -h localhost
+```
 
 1. Load the extension into the database, generate the default master key, and load the key.
 
