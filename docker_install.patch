@@ -1,0 +1,16 @@
+diff --git a/docker/sgx-deps.mk b/docker/sgx-deps.mk
+index 9c83b3a..04d102d 100644
+--- a/docker/sgx-deps.mk
++++ b/docker/sgx-deps.mk
+@@ -22,7 +22,10 @@ SGX_BINS_INSTALL_DIR := $(SDK_INSTALL_PATH)/bin/x64
+ SGX_HEADERS_INSTALL_DIR := $(SDK_INSTALL_PATH)/include
+ 
+ .PHONY: all
+-all: $(addprefix $(SGX_LIBS_INSTALL_DIR)/, $(SGX_BUILD_LIBS) $(SGX_RUNTIME_LIBS)) $(addprefix $(SGX_BINS_INSTALL_DIR)/, $(SGX_BINS)) sgx_headers
++all: $(addprefix /usr/lib/, $(SGX_RUNTIME_LIBS)) $(addprefix $(SGX_LIBS_INSTALL_DIR)/, $(SGX_BUILD_LIBS) $(SGX_RUNTIME_LIBS)) $(addprefix $(SGX_BINS_INSTALL_DIR)/, $(SGX_BINS)) sgx_headers
++
++/usr/lib/libsgx_%: $(SDK_BUILD_DIR)/libsgx_%
++	cp $(SDK_BUILD_DIR)/libsgx_$* $@
+ 
+ $(SGX_LIBS_INSTALL_DIR)/libsgx_%: $(SDK_BUILD_DIR)/libsgx_% | $(SGX_LIBS_INSTALL_DIR)
+ 	cp $(SDK_BUILD_DIR)/libsgx_$* $@
